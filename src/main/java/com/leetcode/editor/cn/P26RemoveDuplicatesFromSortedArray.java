@@ -48,31 +48,17 @@ public class P26RemoveDuplicatesFromSortedArray{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
         public int removeDuplicates(int[] nums) {
-            for (int i = 0; i < nums.length - 1; i++) {
-                for (int j = i + 1; j < nums.length - i - 1; j++) {
-                    if (nums[i] == nums[j]) {
-                        for (int k = j; k < nums.length - 1; k++) {
-                            int tmp = nums[k];
-                            nums[k] = nums[k + 1];
-                            nums[k + 1] = tmp;
-                        }
-                        j--;
-                    } else {
-                        break;
-                    }
-                }
-                if (nums[i] >= nums[i+1]){
-                    return i+1;
+            if (nums.length == 0) return 0;
+            int i = 0;
+            for (int j = 1; j < nums.length; j++) {
+                if (nums[j] != nums[i]) {
+                    i++;
+                    nums[i] = nums[j];
                 }
             }
-            return nums.length;
+            return i + 1;
         }
-    }
+}
 //leetcode submit region end(Prohibit modification and deletion)
-//    public static void main(String[] args) {
-//        P26RemoveDuplicatesFromSortedArray p26RemoveDuplicatesFromSortedArray = new P26RemoveDuplicatesFromSortedArray();
-//        int[] ints = {0,0,1,1,1,2,2,3,3,4};
-//        int[] ints2 = {1,1,2};
-//        p26RemoveDuplicatesFromSortedArray.removeDuplicates(ints2);
-//    }
+
 }
